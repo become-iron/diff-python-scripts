@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 def dda(x1, y1, x2, y2):
     """РАСТЕРИЗАЦИЯ ОТРЕЗКА ПО АЛГОРИТМУ DDA
     Принимает:
@@ -21,13 +22,13 @@ def dda(x1, y1, x2, y2):
     dx = (x_end - x_start) / L  # приращение по x
     dy = (y_end - y_start) / L  # приращение по y
     # расчёт точек линии
-    values = ((x_start, y_start),) + tuple((_round(x_start+dx+dx*i), _round(y_start+dy+dy*i)) for i in range(L))
+    points = ((x_start, y_start),) + tuple((_round(x_start+dx+dx*i), _round(y_start+dy+dy*i)) for i in range(L))
 
-    return values
+    return points
+
 
 def _round(number):
-    """
-    ОКРУГЛЕНИЕ ЧИСЛА В БОЛЬШУЮ СТОРОНУ
+    """ОКРУГЛЕНИЕ ЧИСЛА В БОЛЬШУЮ СТОРОНУ
     """
     return int((number+0.5)//1)
 
