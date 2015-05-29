@@ -1,20 +1,28 @@
 # -*- coding: utf-8 -*-
 
 def dda(x1, y1, x2, y2):
+    """РАСТЕРИЗАЦИЯ ОТРЕЗКА ПО АЛГОРИТМУ DDA
+    Принимает:
+        x1 (int) - координата по x начала отрезка
+        y1 (int) - координата по y начала отрезка
+        x2 (int) - координата по x конца отрезка
+        y2 (int) - координата по y конца отрезка
+    Возвращает:
+        (tuple) - значения точек линии. Пример: ((15, 22), (14, 21), (13, 20), (12, 19))
+    """
+    print(x1, y1, x2, y2)
     x_start = _round(x1)
     y_start = _round(y1)
     x_end = _round(x2)
     y_end = _round(y2)
-    L = abs(x_end - x_start) + 1 if abs(x_end - x_start) > abs(y_end - y_start) else abs(y_end - y_start) + 1
+    # вычисление количества шагов
+    # цикла растеризации
+    L = abs(x_end - x_start) - 1 if abs(x_end - x_start) > abs(y_end - y_start) else abs(y_end - y_start) - 1
 
     dx = (x_end - x_start) / L  # приращение по x
     dy = (y_end - y_start) / L  # приращение по y
-    x, y = x_start, y_start
-    values = ((x, y),)
-    for i in range(L):
-        x += dx
-        y += dy
-        values += ((_round(x), _round(y)),)
+    # расчёт точек линии
+    values = ((x_start, y_start),) + tuple((_round(x_start+dx+dx*i), _round(y_start+dy+dy*i)) for i in range(L))
 
     return values
 
@@ -38,6 +46,7 @@ if __name__ == '__main__':
                  randint(-10, 30),
                  randint(-10, 30))
 
+    print(values)
     if plot_pylab:
         # построить неразрывный график,
         # опираясь на полученные точки
