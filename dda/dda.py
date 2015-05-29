@@ -10,7 +10,6 @@ def dda(x1, y1, x2, y2):
     Возвращает:
         (tuple) - значения точек линии. Пример: ((15, 22), (14, 21), (13, 20), (12, 19))
     """
-    print(x1, y1, x2, y2)
     x_start = _round(x1)
     y_start = _round(y1)
     x_end = _round(x2)
@@ -46,7 +45,6 @@ if __name__ == '__main__':
                  randint(-10, 30),
                  randint(-10, 30))
 
-    print(values)
     if plot_pylab:
         # построить неразрывный график,
         # опираясь на полученные точки
